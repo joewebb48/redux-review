@@ -3,8 +3,8 @@ import './App.css';
 import './components/pages.css'
 import Nav from './components/Nav/Nav';
 import PageOne from './components/PageOne/PageOne';
-import PageTwo from './components/PageThree/PageTwo';
-import PageThree from './components/PageTwo/PageThree';
+import PageTwo from './components/PageTwo/PageTwo';
+import PageThree from './components/PageThree/PageThree';
 
 class App extends Component {
   render() {
