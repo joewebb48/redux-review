@@ -1,16 +1,48 @@
 import React from 'react'
 import './pageone.css'
+import { updateEverything } from '../../ducks/reducer'
+import { connect } from 'react-redux'
 
+class PageOne extends React.Component {
+    constructor() {
+        super();
+        this.state = {
+            name: '',
+            age: '',
+            email: '',
+            phoneNumber: ''
+        }
+    }
 
-const PageOne = props => {
-    return (
-        <div className="page" id="page-one-wrapper">
-        Name: <input type="text"/>
-        Age: <input type="text"/>
-        Email: <input type="text"/>
-        Phone Number: <input type="text"/>
-        <button>Submit</button>
-        </div>
-    )
+    handleChange(field, value) {
+        this.setState({ [`${field}`] : value})
+    }
+
+    render() {
+        return (
+            <div className="page" id="page-one-wrapper">
+            Name: <input 
+                value={this.state.name} 
+                onChange={(e) => this.handleChange("name", e.target.value)}
+                type="text"/>
+            Age: <input 
+                value={this.state.age} 
+                onChange={(e) => this.handleChange("age", e.target.value)}
+                type="text"/>
+            Email: <input 
+                value={this.state.email} 
+                onChange={(e) => this.handleChange("email", e.target.value)}
+                type="text"/>
+            Phone Number: <input 
+                value={this.state.phoneNumber} 
+                onChange={(e) => this.handleChange("phoneNumber", e.target.value)}
+                type="text"/>
+            <button onClick={() => this.props.updateEverything(this.state)}>Submit</button>
+            </div>
+        )
+    }
 }
-export default PageOne
+const mapDispatchtoProps = {
+    updateEverything
+}
+export default connect(null, mapDispatchtoProps)(PageOne)
